@@ -2,7 +2,6 @@ package cc.dreamcode.template;
 
 import cc.dreamcode.command.bukkit.BukkitCommandProvider;
 import cc.dreamcode.menu.bukkit.BukkitMenuProvider;
-import cc.dreamcode.menu.bukkit.okaeri.MenuBuilderSerdes;
 import cc.dreamcode.notice.minecraft.bukkit.serdes.BukkitNoticeSerdes;
 import cc.dreamcode.platform.DreamVersion;
 import cc.dreamcode.platform.bukkit.DreamBukkitConfig;
@@ -15,9 +14,11 @@ import cc.dreamcode.platform.component.ComponentManager;
 import cc.dreamcode.platform.persistence.DreamPersistence;
 import cc.dreamcode.platform.persistence.component.DocumentPersistenceComponentResolver;
 import cc.dreamcode.platform.persistence.component.DocumentRepositoryComponentResolver;
+import cc.dreamcode.template.command.TestCommand;
 import cc.dreamcode.template.config.MessageConfig;
 import cc.dreamcode.template.config.PluginConfig;
-import cc.dreamcode.template.mcversion.VersionProvider;
+import cc.dreamcode.template.test.TestManager;
+import cc.dreamcode.template.test.TestSerdes;
 import cc.dreamcode.template.user.UserRepository;
 import eu.okaeri.configs.serdes.OkaeriSerdesPack;
 import eu.okaeri.persistence.document.DocumentPersistence;
@@ -36,7 +37,6 @@ public final class BukkitTemplatePlugin extends DreamBukkitPlatform implements D
 
     @Override
     public void enable(@NonNull ComponentManager componentManager) {
-        this.registerInjectable(VersionProvider.getVersionAccessor());
         this.registerInjectable(BukkitTasker.newPool(this));
         this.registerInjectable(BukkitMenuProvider.create(this));
         this.registerInjectable(BukkitCommandProvider.create(this, this.getInjector()));
@@ -64,6 +64,9 @@ public final class BukkitTemplatePlugin extends DreamBukkitPlatform implements D
             componentManager.registerComponent(DocumentPersistence.class);
             componentManager.registerComponent(UserRepository.class);
         });
+
+        componentManager.registerComponent(TestManager.class);
+        componentManager.registerComponent(TestCommand.class);
     }
 
     @Override
@@ -80,7 +83,9 @@ public final class BukkitTemplatePlugin extends DreamBukkitPlatform implements D
     public @NonNull OkaeriSerdesPack getConfigSerdesPack() {
         return registry -> {
             registry.register(new BukkitNoticeSerdes());
-            registry.register(new MenuBuilderSerdes());
+
+            registry.register(new TestSerdes());
+
         };
     }
 
