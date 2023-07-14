@@ -4,9 +4,6 @@ repositories {
 }
 
 dependencies {
-    // -- bukkit-versions --
-    project(":bukkit:mcversion").getSubprojects().forEach(mcv -> implementation mcv)
-
     // -- spigot api -- (base)
     compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
 
@@ -40,15 +37,6 @@ dependencies {
     implementation "eu.okaeri:okaeri-configs-serdes-bukkit:4.0.9"
     implementation "eu.okaeri:okaeri-configs-serdes-commons:4.0.9"
 
-    // -- persistence data --
-    implementation 'eu.okaeri:okaeri-persistence-flat:2.0.0-beta.1'
-    implementation 'eu.okaeri:okaeri-persistence-jdbc:2.0.0-beta.1'
-    implementation 'eu.okaeri:okaeri-persistence-mongo:2.0.0-beta.1'
-
-    // -- persistence data configure --
-    implementation 'eu.okaeri:okaeri-configs-json-gson:4.0.9'
-    implementation 'eu.okaeri:okaeri-configs-json-simple:4.0.9'
-
     // -- injector --
     implementation 'eu.okaeri:okaeri-injector:2.1.0'
 
@@ -65,7 +53,7 @@ dependencies {
 shadowJar {
     checkstyleTest
 
-    archiveFileName = "Dream-Template-Bukkit-${project.version}.jar"
+    archiveFileName = "Dream-Serdes-Test-${project.version}.jar"
 
     minimize()
 
@@ -79,8 +67,6 @@ shadowJar {
     relocate "cc.dreamcode.notice", "cc.dreamcode.template.libs.cc.dreamcode.notice"
 
     relocate "org.bson", "cc.dreamcode.template.libs.org.bson"
-    relocate "com.mongodb", "cc.dreamcode.template.libs.com.mongodb"
-    relocate "com.zaxxer", "cc.dreamcode.template.libs.com.zaxxer"
     relocate "org.slf4j", "cc.dreamcode.template.libs.org.slf4j"
     relocate "org.json", "cc.dreamcode.template.libs.org.json"
     relocate "com.google.gson", "cc.dreamcode.template.libs.com.google.gson"

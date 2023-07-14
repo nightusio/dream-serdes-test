@@ -1,7 +1,7 @@
-package cc.dreamcode.template.command;
+package cc.dreamcode.serdestest.command;
 
 import cc.dreamcode.command.bukkit.BukkitCommand;
-import cc.dreamcode.template.test.TestManager;
+import cc.dreamcode.serdestest.test.TestManager;
 import eu.okaeri.injector.annotation.Inject;
 import lombok.NonNull;
 import org.bukkit.command.CommandSender;

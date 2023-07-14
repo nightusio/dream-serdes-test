@@ -1,4 +1,4 @@
-package cc.dreamcode.template.test;
+package cc.dreamcode.serdestest.test;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

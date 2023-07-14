@@ -1,6 +1,6 @@
-package cc.dreamcode.template.test;
+package cc.dreamcode.serdestest.test;
 
-import cc.dreamcode.template.config.PluginConfig;
+import cc.dreamcode.serdestest.config.PluginConfig;
 import eu.okaeri.injector.annotation.Inject;
 
 import java.util.ArrayList;

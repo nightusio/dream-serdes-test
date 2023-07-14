@@ -1,4 +1,4 @@
-package cc.dreamcode.template.test;
+package cc.dreamcode.serdestest.test;
 
 import eu.okaeri.configs.schema.GenericsDeclaration;
 import eu.okaeri.configs.serdes.DeserializationData;
